@@ -22,18 +22,15 @@ contract MyTokenAjmeet is ERC20, Ownable {
     {}
 
     function mintthetoken (address sendto, uint256 amount) public onlyOwner {
-        require(sendto != address(0), "Invalid address");
         require(amount > 0, "Amount should be greater than zero");
         _mint(sendto, amount);
     }
 
-      function burnthegiventoken (address toburn, uint256 amount) public  {   
-        require(toburn != address(0), "Invalid address");
+      function burnthegiventoken (address toburn, uint256 amount) public  { 
         require(amount > 0, "Amount should be greater than zero");
         _burn(toburn, amount);
     }
       function Transfertoken (address toanother, uint256 amounttransfer) public  returns (bool) {
-        require(toanother != address(0), "Invalid address");
         require(amounttransfer > 0, "Amount should be greater than zero");
         return super.transfer(toanother, amounttransfer);
         
