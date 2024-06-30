@@ -30,9 +30,9 @@ contract MyTokenAjmeet is ERC20, Ownable {
         require(amount > 0, "Amount should be greater than zero");
         _burn(toburn, amount);
     }
-      function Transfertoken (address toanother, uint256 amounttransfer) public  returns (bool) {
+      function Transfertoken (address _toanother, uint256 _amounttransfer) public  returns (bool) {
         require(amounttransfer > 0, "Amount should be greater than zero");
-        return super.transfer(toanother, amounttransfer);
+        return super.transfer(_toanother, _amounttransfer);
         
     }
 }
