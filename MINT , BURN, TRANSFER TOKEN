@@ -1,27 +1,33 @@
+// Requirements
+// show the Functionality of :
+// 1 Only contract owner should be able to mint tokens
+// 2 Any user can transfer tokens
+// 3 Any user can burn tokens
+
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract MyTokenAjmeet is ERC20, Ownable {
+
+contract _MyTokenAjmeet is ERC20, Ownable {
     constructor(string memory initialOwner,string memory symbol)
         ERC20(initialOwner, symbol)
         Ownable(msg.sender)
     {}
 
-    function mintthetoken (address sendto, uint256 amount) public onlyOwner {
-        require(amount > 0, "Amount should be greater than zero");
-        _mint(sendto, amount);
+    function _mintthetoken (address _sendto, uint256 _amount) public onlyOwner {
+        require(_amount > 0, "Amount should be greater than zero");
+        _mint(_sendto, _amount);
     }
-
-      function burnthegiventoken (address toburn, uint256 amount) public  { 
-        require(amount > 0, "Amount should be greater than zero");
-        _burn(toburn, amount);
+      function _burnthegiventoken (address _toburn, uint256 _amount) public  {  
+        require(_amount > 0, "Amount should be greater than zero");
+        _burn(_toburn, _amount);
     }
-      function Transfertoken (address _toanother, uint256 _amounttransfer) public  returns (bool) {
-        require(_amounttransfer > 0, "Amount should be greater than zero");
+      function _Transfertoken (address _toanother, uint256 _amounttransfer) public returns (bool) {
+         require(_amounttransfer > 0, "Amount should be greater than zero");
         return super.transfer(_toanother, _amounttransfer);
         
-    }
+    }               
 }
